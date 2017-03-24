@@ -1,0 +1,20 @@
+{
+  "name": "trabajo_roberto",
+  "version": "1.0.0",
+  "description": "envio de datos por socket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "formulario",
+    "socket",
+    "readtime"
+  ],
+  "author": "Eugenio Pàjaro A",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  }
+}

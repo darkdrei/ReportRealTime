@@ -1,0 +1,310 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+    <style>
+    /**
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+
+    .demo-ribbon {
+      width: 100%;
+      height: 40vh;
+      background-color: #3F51B5;
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+    }
+
+    .demo-main {
+      margin-top: -35vh;
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+    }
+
+    .demo-header .mdl-layout__header-row {
+      padding-left: 40px;
+    }
+
+    .demo-container {
+      max-width: 1600px;
+      width: calc(100% - 16px);
+      margin: 0 auto;
+    }
+
+    .demo-content {
+      border-radius: 2px;
+      padding: 80px 56px;
+      margin-bottom: 80px;
+    }
+
+    .demo-layout.is-small-screen .demo-content {
+      padding: 40px 28px;
+    }
+
+    .demo-content h3 {
+      margin-top: 48px;
+    }
+
+    .demo-footer {
+      padding-left: 40px;
+    }
+
+    .demo-footer .mdl-mini-footer--link-list a {
+      font-size: 13px;
+    }
+
+    </style>
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+
+    div.conten{
+      font-size:15px !important;
+    }
+    div.conten > h3{
+      font-size: 18px;
+      margin-top: 25px;
+    }
+    div.conten > h2{
+      font-size: 17px;
+    }
+    hr { 
+    border-top: 1px dotted #8c8b8b;
+    } 
+    </style>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+   <script>
+     $(function () {
+       var socket = io();
+       $('form').submit(function(){
+         socket.emit('chat message', $('#m').val());
+         $('#m').val('');
+         return false;
+       });
+       socket.on('chat message', function(msg){
+         $('#messages').append($('<li>').text(msg));
+         window.scrollTo(0, document.body.scrollHeight);
+       });
+       $('.enviar').on('click', function(){
+         var dic = {codigo:$('#codigo').val(),
+         mantenimiento:$('#mantenimiento').val(),
+         time_of:$('#tique').val(),
+         periodo:$('#periosidad').val(),
+         fecha_periodo:$('#fecha_periosidad').val(),
+         localidad:$('#localidad').val(),
+         fecha2:$('#fecha2').val(),
+         cx:$('#cx').val(),
+         tx:$('#tx').val(),
+         dx:$('#dx').val(),
+         otros:$('#otros').val(),
+          regu:$('#regu').val(),
+          ubi:$('#ubi').val(),
+          modelo:$('#modelo').val(),
+          marca:$('#marca').val(),
+          serie:$('#serie').val(),
+          reg:$('#reg').val(),
+          maxentra:$('#max-entra').val(),
+          maxcarg:$('#max-carg').val(),
+          ventra:$('#v-entra').val(),
+          vsalida:$('#v-salida').val(),
+          prccarga:$('#prc-carga').val(),
+          vbatres:$('#v-bat-res').val(),
+          noceldas:$('#no-celdas').val(),
+          area:$('#area').val(),
+          soporte:$('#soporte').val(),
+          tablero:$('#tablero').val(),
+          medida:$('#medida').val(),
+          bats:$('#bats').val(),
+          equip:$('#equip').val(),
+          revision:$('#revision').val(),
+          canaleta:$('#canaleta').val(),
+          marc:$('#marc').val(),
+          tomas:$('#tomas').val(),
+          fija:$('#fija').val(),
+          medbancbat:$('#med-banc-bat').val(),
+          bancbat:$('#banc-bat').val(),
+          vcelda:$('#v-celda').val(),
+          cargbat:$('#carg-bat').val(),
+          vsalvac:$('#v-sal-vac').val(),
+          vsalcarg:$('#v-sal-carg').val(),
+          ccarg:$('#c-carg').val(),
+          ccons:$('#c-cons').val(),
+          alarm:$('#alarm').val(),};
+          console.log(dic);
+         socket.emit('agregar',dic);
+       });
+     });
+   </script>
+  </head>
+  <body >
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col conten">
+
+            <h3>FORMATO MANTENIMIENTO PREVENTIVO EQUIPOS DE ENERGIA</h3>
+            <hr/>
+
+            <h3><label for="">Gerencia Operaciones Campo /Jefatura Operación Energía</label> <input type="text" name="" value="Principal"></h3>
+            <h3><label for="">Código  </label><input type="text" id="codigo" value="11111"></h3>
+            <h3><label for="">Plan de mantenimiento</label>
+              <select id="mantenimiento">
+                <option value="Sistema Solar" selected>Sistema Solar</option>
+                <option value="Sistemas Solares Fotovoltaicos">Sistemas Solares Fotovoltaicos</option>
+              </select>
+            </h3>
+            <h3><label for="">Tiquete OT</label> <input type="text" id="tique" value="104020106"></h3>
+            <h3><label for="">Periosidad</label> <input type="text" id="periosidad" value="Semanal"> <label for="">Fecha ultima Inspección</label> <input id="fecha_periosidad" type="date" value="2017-03-20"/></h3>
+            <h3><label for="">Localidad</label> <input type="text" id="localidad" value="Cartagena"></h3>
+            <h3><label for="">Fecha </label> <input id="fecha2" type="date" value="2017-03-20"/><label for=""> Hora inicio</label> <input type="time" id="hora_ini" value="11:45:00"></h3>
+            <hr/>
+
+            <h3><label for=""><b>AREA QUE RESPALDA</b></h3>
+              <label for="">Cx </label> <input type="text" value="Cx1111" id="cx">
+              <label for="">Tx </label> <input type="text" id="tx" value="TX111">
+              <label for="">Dx </label> <input type="text" id="dx" value="Dx111">
+              <label for="">Otros </label> <input type="text" id="otros" value="Dx111">
+              <hr/>
+
+            <h2><B>FICHA TECNICA EQUIPO</B></h2>
+            <h3><label for=""></label>REGULADOR </label></h3><input type="text" name="" id="regu" value="PANEL SOLAR">
+            <h3><label for="">UBICACIÓN</label></h3><input type="text" name="" id="ubi" value="Test-valor">				
+            <hr/>
+
+            <h4>OBSERVACIONES:</h4>
+            <h3><label for="">MODELO</label></h3><input type="text" name="" id="modelo" value="Test-valor">
+            <h3><label for="">MARCA</label></h3><input type="text" name="" id="marca" value="Test-valor">
+            <h3><label for="">SERIE</label></h3><input type="text" name="" id="serie" value="Test-valor">
+            <h2>PARAMETROS ELECTRICOS</h2>
+                <h3><label for="">REGULADOR</label><select name="" id="reg">
+                  <option value="Panel Solar">Panel solar</option>
+                  <option value="Panel Solar Transparente">Panel solar Transparente</option>
+                </select></h3>
+            <h3><label for="">CAPACIDAD KVA / Wp</label></h3><input type="text" name="" id="kva" value="Test-valor">		
+            <hr/>					
+
+            <h4>OBSERVACIONES</h4>
+            <h3><label for="">CORRIENTE MAXIMA ENTRADA</label></h3><input type="text" name="" id="max-entra" value="Test-valor">
+            <h3><label for="">CORRIENTE MAXIMA CARGA</label></h3><input type="text" name="" id="max-carga" value="Test-valor">
+            <h3><label for="">VOLTAJE DE ENTRADA</label></h3><input type="text" name="" id="v-entra" value="Test-valor">
+            <h3><label for="">VOLTAJE DE SALIDA</label></h3><input type="text" name="" id="v-salida" value="Test-valor">
+            <h3><label for="">PORCENTAJE DE CARGA</label></h3><input type="text" name="" id="prc-carga" value="Test-valor">
+            <h3><label for="">VOLTAJE BATERIAS DE RESPALDO</label></h3><input type="text" name="v-bat-res" id="" value="Test-valor">
+            <h3><label for="">NUMERO DE CELDAS BANCO</label></h3><input type="text" name="" id="no-celdas" value="Test-valor">
+            <h3><label for="">LIMPIEZA DE:</label>
+            <select name="" id="">
+              <option value="SI">SI</option>
+              <option value="NO">NO</option>
+            </select></h3>
+            <hr/>
+
+            <h4>OBSERVACIONES</h4>
+            <h3><label for="">AREA O RECINTO</label></h3><input type="text" name="" id="area" value="Test-valor">
+            <h3><label for="">ESTRUCTURA DE SOPORTE</label></h3><input type="text" name="" id="soporte" value="Test-valor">
+            <h3><label for="">TABLERO ELECTRICO</label></h3><input type="text" name="" id="tablero" value="Test-valor">
+            <h3><label for="">APARATOS DE MEDIDA</label></h3><input type="text" name="" id="medida" value="Test-valor">
+            <h3><label for="">BATERIAS</label></h3><input type="text" name="" id="bats" value="Test-valor">
+            <h3><label for="">EQUIPO</label></h3><input type="text" name="" id="equip" value="Test-valor">
+            <hr/>
+
+          <h4>	SISTEMA DE DISTRIBUCIÓN</h4>
+          <h3><label for="">	REVISION DE</label><select name="" id="revision">
+            <option value="SI">SI</option>
+            <option value="NO">NO</option></h3>
+          <hr/>
+
+          </select> 	<h4>OBSERVACIONES</h4>
+            <h3><label for="">CANALETA</label></h3><input type="text" name="" id="canaleta" value="Test-valor">
+            <h3><label for="">MARCACION</label></h3><input type="text" name="" id="marc" value="Test-valor">
+            <h3><label for="">ESTADO TOMAS</label></h3><input type="text" name="" id="tomas" value="Test-valor">
+            <h3><label for="">FIJACION</label></h3><input type="text" name="" id="fija" value="Test-valor">
+            <h3><label for="">DIAGRAMA UNIFILAR</label></h3><input type="text" name="" id="diag-unifi" value="Test-valor">
+          <h3><label for="">	MEDICION EN BANCO DE BATERIAS</label></h3><input type="text" name="" id="med-banc-bat" value="Test-valor">:			<h4>UND</h4>		<h4>OBSERVACIONES</h4>
+            <h3><label for="">BANCO DE BATERIAS</label></h3><input type="text" name="" id="banc-bat" value="Test-valor"> <h4>TOTAL</h4>		<h4>Vcc</h4>
+            <h3><label for="">VOLTAJE POR CELDA</label></h3><input type="text" name="" id="v-celda" value="Test-valor">		<h4>Vcc</h4>
+            <h3><label for="">CARGADOR DE BATERIA</label></h3><input type="text" name="" id="carg-bat" value="Test-valor">		<h4>Vcc</h4>
+            <h3><label for="">VOLTAJE  DE SALIDA EN VACIO</label></h3><input type="text" name="" id="v-sal-vac" value="Test-valor">		<h4>Vca</h4>
+            <h3><label for="">VOLTAJE DE SALIDA CON CARGA</label></h3><input type="text" name="" id="v-sal-carg" value="Test-valor">		<h4>Vca</h4>
+            <h3><label for="">CORRIENTE DE CARGA</label></h3><input type="text" name="" id="c-carg" value="Test-valor">		A
+            <h3><label for="">CORRIENTE DE CONSUMO</label></h3><input type="text" name="" id="c-cons" value="Test-valor">		A
+            <h3><label for="">ALARMAS</label></h3><input type="text" name="" id="alarm" value="Test-valor"> <h5>(ESPECIFICAR TIPO)</h5>
+
+            <button type="button" name="Enviar"  class="enviar">Enviar</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </body>
+</html>
